@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SNiGMA – UNH | Plataforma Nutricional</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+<header>
+    <h1>Proyecto SNiGMA – UNH</h1>
+    <h2>Nutrición de precisión en alpacas con NIRS, GPS y sensores</h2>
+</header>
+
+<section id="galeria">
+    <h3>Galería – Huancavelica y Lachoc</h3>
+    <div class="imagenes">
+        <img src="https://images.unsplash.com/photo-1549280485-22a1374286dd" alt="Alpacas">
+        <img src="https://images.unsplash.com/photo-1526403722627-74b0f3e71a3d" alt="Huancavelica">
+        <img src="https://images.unsplash.com/photo-1524169358666-79f22534bc6c" alt="Andes">
+    </div>
+</section>
+
+<section id="mapa">
+    <h3>Mapa GPS – Seguimiento de Alpacas</h3>
+    <div id="map"></div>
+</section>
+
+<section id="graficos">
+    <h3>Análisis nutricional (NIRS)</h3>
+    <canvas id="graficoNIRS"></canvas>
+</section>
+
+<script src="js/app.js"></script>
+</body>
+</html>
