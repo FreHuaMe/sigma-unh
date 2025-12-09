@@ -1,39 +1,106 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>SNiGMA – UNH | Plataforma Nutricional</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+	body {
+    	font-family: Arial, sans-serif;
+    	margin: 0;
+    	background: #f8f9fa;
+	}
+
+	header {
+   	 background: #245b2c;
+    	color: white;
+   	 padding: 20px;
+    	text-align: center;
+	}
+
+	#galeria .imagenes {
+   	 display: flex;
+   	 gap: 15px;
+    	padding: 20px;
+   	 justify-content: center;
+	}
+
+	#galeria img {
+   	 width: 30%;
+  	  border-radius: 10px;
+	}
+
+	//#map {
+    	//height: 400px;
+    	//margin: 20px;
+    	//border-radius: 10px;
+	//}
+
+	//canvas {
+    	//width: 80%;
+   	// margin: 20px auto;
+    	//display: block;
+	//}
+	</style>
 </head>
 
 <body>
 <header>
-    <h1>Proyecto SNiGMA – UNH</h1>
-    <h2>Nutrición de precisión en alpacas con NIRS, GPS y sensores</h2>
+    <h1><center> Proyecto SNiGMA – UNH </center></h1>
+	<center><img src= "https://www.unh.edu.pe/wp-content/uploads/2023/02/LOGO-UNH.png" width="120" height="180" style=border:0;alt="UNH"></center>
+    <h2> "Nutrición de precisión utilizando tecnología NIRS, GPS y sensores de movimiento en alpacas como estrategia de adaptación al cambio climático (SNiGMA) – UNH"</h2>
 </header>
+<p><b>Como parte de los objetivos específicos del proyecto, se plantea el desarrollo de una plataforma web y aplicación móvil que permita el análisis nutricional y la gestión de datos de campo mediante sensores y dispositivos móviles.</b></p>
 
 <section id="galeria">
-    <h3>Galería – Huancavelica y Lachoc</h3>
+    <h3>Galería </h3>
     <div class="imagenes">
-        <img src="https://images.unsplash.com/photo-1549280485-22a1374286dd" alt="Alpacas">
-        <img src="https://images.unsplash.com/photo-1526403722627-74b0f3e71a3d" alt="Huancavelica">
-        <img src="https://images.unsplash.com/photo-1524169358666-79f22534bc6c" alt="Andes">
+	<img src= "https://cms.ytuqueplanes.com/archivos/fotos/novedades/interna-Aniversario%20Huancavelica-1.webp" width="600" height="300" style=border:0; alt="Huancavelica">        
+	<img src= "https://portal.andina.pe/EDPfotografia3/Thumbnail/2023/08/01/000981487W.webp" width="600" height="300" style=border:0; alt="Alpacas">
+        <img src= "https://portal.andina.pe/EDPfotografia2/Thumbnail/2012/02/28/000176932W.jpg" width="600" height="300" style=border:0; >
     </div>
 </section>
 
 <section id="mapa">
     <h3>Mapa GPS – Seguimiento de Alpacas</h3>
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2585.768994228083!2d-75.09310720789706!3d-12.89327168850763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910e0f95df71564b%3A0x224d99744a404d4e!2sLACHOCC!5e1!3m2!1ses!2spe!4v1765313777300!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     <div id="map"></div>
 </section>
 
 <section id="graficos">
     <h3>Análisis nutricional (NIRS)</h3>
-    <canvas id="graficoNIRS"></canvas>
+   	<a href= "https://drive.google.com/file/d/1dwbkgio3IcfXQMp6yT-EFK98B7p3k-TZ/view?usp=sharing" target="_blank";>Descargar o ver PDF</a> 
+	//<canvas id="graficoNIRS"></canvas>
 </section>
+<script>
+// MAPA GPS
+var map = L.map('map').setView([-12.7833, -74.9725], 10);
 
-<script src="js/app.js"></script>
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18
+}).addTo(map);
+
+L.marker([-12.78, -74.97]).addTo(map)
+    .bindPopup("Alpaca 01 – Sensor activo");
+
+// GRAFICO NIRS
+const ctx = document.getElementById('graficoNIRS').getContext('2d');
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ["850 nm", "900 nm", "950 nm", "1000 nm"],
+        datasets: [{
+            label: 'Absorción espectral',
+            data: [0.12, 0.19, 0.13, 0.22],
+            borderColor: 'green',
+            fill: false
+        }]
+    },
+    options: { responsive: true }
+});
+</script>
 </body>
 </html>
+
+
